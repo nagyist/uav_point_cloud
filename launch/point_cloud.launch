@@ -1,0 +1,13 @@
+<launch>
+
+	<arg name="model" default="$(find uav_point_cloud)/urdf/erlecopter_base.xacro"/>
+	<arg name="world_name" default="$(find uav_point_cloud)/worlds/default.world"/>
+
+	<include file="$(find ardupilot_sitl_gazebo_plugin)/launch/erlecopter_spawn.launch">
+		<arg name="model" value="$(arg model)"/>
+		<arg name="world_name" value="$(arg world_name)"/>
+	</include>
+	
+	<node name="conversor_node" pkg="uav_point_cloud" type="conversor_node" />
+
+</launch>
